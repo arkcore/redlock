@@ -45,11 +45,11 @@ function redlock(opts) {
 
         var lock = {
             release : function(callback) {
-                callback ||= nop;
+                callback = callback || nop;
                 opts.client.del(key, callback);
             },
             ping : function(callback) {
-                callback ||= nop;
+                callback = callback || nop;
                 opts.client.setx(key, 1, opts.timeout, callback);
             },
         };
